@@ -2,14 +2,18 @@
   "name": "slack_basebot",
   "version": "1.0.0",
   "description": "Slackbot to retrieve mlb scores",
-  "main": "index.js",
+  "main": "start.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node start.js"
   },
   "author": "Chris Tamez",
   "license": "MIT",
   "dependencies": {
     "axios": "^0.18.0",
     "slackbots": "^1.2.0"
+  },
+  "devDependencies": {
+    "babel-preset-env": "^1.7.0",
+    "babel-register": "^6.26.0"
   }
 }

@@ -1,10 +1,12 @@
+import { botToken } from './slackBotToken';
+
 const SlackBot = require('slackbots');
 const axios = require('axios');
 const desiredChannel = 'we-are-the-10th-man';
 const testingGroup = 'bottest';
 
 const bot = new SlackBot({
-  token: 'xoxb-596270599477-602595255253-EbfCoyzs9tYnBX8Ek4929Joy',
+  token: botToken,
   name: 'basebot'
 });
 
@@ -16,8 +18,8 @@ bot.on('start', () => {
 
   // by obtaining a botId, we can strip the message text down to just the user generated messages
   botId = "<@" + bot.self.id + "> ";
-  bot.postMessageToChannel(desiredChannel, 'Basebot is warmed up and ready to hit some dingers. If you need help, type \'@basebot help\'');
-  // bot.postMessageToGroup(testingGroup, 'Basebot is warmed up and ready to hit some dingers. If you need help, type \'@basebot help\'');
+  // bot.postMessageToChannel(desiredChannel, 'Basebot is warmed up and ready to hit some dingers. If you need help, type \'@basebot help\'');
+  bot.postMessageToGroup(testingGroup, 'Basebot is warmed up and ready to hit some dingers. If you need help, type \'@basebot help\'');
 });
 
 // error handler
@@ -114,8 +116,8 @@ for(var i = 0; i < gamesFound.length; i++){
     }
   }
 
-  bot.postMessageToChannel(desiredChannel, scoreMessage);
-  // bot.postMessageToGroup(testingGroup, scoreMessage);
+  // bot.postMessageToChannel(desiredChannel, scoreMessage);
+  bot.postMessageToGroup(testingGroup, scoreMessage);
 }
 
 /// Parameter | Type: either a specific team or 'all' which will return all of the games on a prescribed date (for now today)
@@ -160,11 +162,11 @@ function botHelp(){
     '\n{desired-team-name} score: input your favorite team\'s name to get a game status and score, if game is in progress' +
     '\ngames: retrieve all games from today and see the live scores across the league';
    
-    bot.postMessageToChannel(desiredChannel, helpMessage);
-    // bot.postMessageToGroup(testingGroup, helpMessage);
+    // bot.postMessageToChannel(desiredChannel, helpMessage);
+    bot.postMessageToGroup(testingGroup, helpMessage);
 }
 
 function errorHandler(error){
-  bot.postMessageToChannel(desiredChannel, error);
-  // bot.postMessageToGroup(testingGroup, error);
+  // bot.postMessageToChannel(desiredChannel, error);
+  bot.postMessageToGroup(testingGroup, error);
 }
