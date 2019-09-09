@@ -4,7 +4,7 @@ const process = require('process');
 const { botToken } = require('../slackBotToken');
 const { getScoreboard } = require('./utils/scoreboard').default;
 
-const { getGames, checkScore } = require('./utils/gameCalculator');
+const { getGames, checkScore } = require('./utils/gameCalculator').default;
 const isTestRun = process.env.NODE_ENV === 'test' ? true : false;
 
 const desiredChannel = 'we-are-the-10th-man';
@@ -81,11 +81,10 @@ function handleMessage(message) {
 }
 
 function botHelp(){
-
-    var helpMessage = 'Basebot currently supports the following commands:' + 
-    '\n{desired-team-name} score: input your favorite team\'s name to get a game status and score, if game is in progress' +
-    '\ngames: retrieve all games from today and see the live scores across the league';
-    return helpMessage;
+  var helpMessage = 'Basebot currently supports the following commands:' + 
+  '\n{desired-team-name} score: input your favorite team\'s name to get a game status and score, if game is in progress' +
+  '\ngames: retrieve all games from today and see the live scores across the league';
+  return helpMessage;
 }
 
 module.exports = {
