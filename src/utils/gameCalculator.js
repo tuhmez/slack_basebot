@@ -76,7 +76,7 @@ const getGames = (masterscoreboard, type) => {
     
       currentGame = gamesFound[i];
       awayTeam = currentGame.away_team_name;
-      homeTeam = currentGame.home_team_name
+      homeTeam = currentGame.home_team_name;
       gameStatus = currentGame.status.status;
       gameTime = currentGame.time;
       gameTimeZone = currentGame.time_zone;
