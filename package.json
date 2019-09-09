@@ -4,16 +4,32 @@
   "description": "Slackbot to retrieve mlb scores",
   "main": "start.js",
   "scripts": {
-    "start": "node start.js"
+    "start": "better-npm-run start",
+    "start:test": "better-npm-run start:test"
+  },
+  "betterScripts": {
+    "start": {
+      "command": "node start.js",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    },
+    "start:test": {
+      "command": "node start.js",
+      "env": {
+        "NODE_ENV": "test"
+      }
+    }
   },
   "author": "Chris Tamez",
   "license": "MIT",
   "dependencies": {
     "axios": "^0.18.0",
+    "better-npm-run": "^0.1.1",
     "slackbots": "^1.2.0"
   },
   "devDependencies": {
-    "babel-preset-env": "^1.7.0",
-    "babel-register": "^6.26.0"
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1"
   }
 }

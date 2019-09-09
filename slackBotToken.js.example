@@ -1,0 +1,2 @@
+// use Bot User OAuth Access Token from the api.slack.com/apps site
+export const botToken = "";
