@@ -24,7 +24,7 @@
   "author": "Chris Tamez",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": ">=0.18.1",
     "better-npm-run": "^0.1.1",
     "slackbots": "^1.2.0"
   },
