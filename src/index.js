@@ -2,9 +2,9 @@ const SlackBot = require('slackbots');
 const process = require('process');
 
 const { botToken } = require('../slackBotToken');
-const { getScoreboard } = require('./utils/scoreboard').default;
+const { getScoreboard } = require('./utils/scoreboard');
 
-const { getGames, checkScore } = require('./utils/gameCalculator').default;
+const { getGames, checkScore } = require('./utils/gameCalculator');
 const isTestRun = process.env.NODE_ENV === 'test' ? true : false;
 
 const desiredChannel = 'we-are-the-10th-man';

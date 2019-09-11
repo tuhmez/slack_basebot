@@ -97,10 +97,10 @@ const getGames = (masterscoreboard, type) => {
             var homeObj = {};
             var awayObj = {};
     
-            for (var i = 0; i < currentGame.linescore.inning.length; i++)
+            for (var j = 0; j < currentGame.linescore.inning.length; j++)
             {
-              var runData = currentGame.linescore.inning[i];
-              var inning = parseInt(i + 1);
+              var runData = currentGame.linescore.inning[j];
+              var inning = parseInt(j + 1);
     
               homeObj[inning] = parseInt(runData.home);
               if ( homeObj[inning] === null || isNaN(homeObj[inning])) {
