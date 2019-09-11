@@ -93,7 +93,8 @@ function handleMessage(message) {
     });
   }
   else if(message.includes('games')){
-    getGames(masterscoreboard, "all").then(res => {
+    getGames(masterscoreboard, "all")
+    .then(res => {
       var gameMatches = res.Matches;
       var boxscoreRequest = res.BoxscoreRequest;
       var requestedTeam = res.TeamRequested;
