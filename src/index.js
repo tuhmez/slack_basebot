@@ -2,7 +2,7 @@ const SlackBot = require('slackbots');
 const process = require('process');
 
 const { botToken } = require('../slackBotToken');
-const { getScoreboard } = require('./utils/scoreboard');
+const { getScoreboard, getCurrentDate } = require('./utils/scoreboard');
 
 const { getGames, checkScore } = require('./utils/gameCalculator');
 const isTestRun = process.env.NODE_ENV === 'test' ? true : false;
@@ -55,11 +55,35 @@ const postMessage = (msg) => {
 };
 
 function handleMessage(message) {
+  // strip the score from the message
+  var stringArray = message.replace("score", "").trim().toLowerCase().split("  ");
 
-  masterscoreboard = getScoreboard();
+  // retrieve the team from the substring
+  var team = stringArray[0];
+  
+  // get the current date to pass if no date passed
+  var currentDate = getCurrentDate();
+
+  // get the user input string
+  // TODO add in date validation
+  var userInputString = '';
+  if (stringArray.length > 1)
+  {
+    userInputString = stringArray[1];
+  }
+  var scoreboardDate = currentDate;
+
+  if(userInputString)
+  {
+    var userDateArray = userInputString.split("/");
+    scoreboardDate.day = userDateArray[1];
+    scoreboardDate.month = userDateArray[0];
+    scoreboardDate.year = userDateArray[2];
+  }
+
+  masterscoreboard = getScoreboard(scoreboardDate.day, scoreboardDate.month, scoreboardDate.year);
   
   if(message.includes('score')){
-    var team = message.replace("score", "").trim().toLowerCase();
     getGames(masterscoreboard, team)
     .then(res => {
       var gameMatches = res.Matches;
@@ -83,8 +107,8 @@ function handleMessage(message) {
 
 function botHelp(){
   var helpMessage = 'Basebot currently supports the following commands:' + 
-  '\n{desired-team-name} score: input your favorite team\'s name to get a game status and score, if game is in progress' +
-  '\ngames: retrieve all games from today and see the live scores across the league';
+  '\n\n- {desired-team-name} score {date (MM/DD/YYYY) - optional}: input your favorite team\'s name to get a game status and score on today\'s date or ' +
+  'any date input under the formal MM/DD/YYYY\n- games: retrieve all games from today and see the live scores across the league';
   return helpMessage;
 }
 
