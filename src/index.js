@@ -35,7 +35,9 @@ bot.on('error', (err) => console.log('['+new Date().toString() +']' + ' ' + err)
 
 // message handler
 bot.on('message', data => {
-  if(data.username == 'basebot' || data.type !== 'message' || !data.text.includes(botId)){
+  console.log(data);
+  if(data.username == 'basebot' || data.type !== 'message' || 
+     data.text == null || !data.text.includes(botId)) {
     return;
   }
   else if (data.text.includes(botId) && data.type == 'message'){
