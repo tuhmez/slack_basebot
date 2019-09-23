@@ -26,7 +26,8 @@ bot.on('start', () => {
   postMessage('Basebot is warmed up and ready to hit some dingers. If you need help, type \'@basebot help\'');
 });
 
-bot.on('close', () => {
+bot.on('close', (close) => {
+  console.log(`reason for close: ${close}`);
   postMessage('Basebot shutting down! [' + new Date().toString() +']');
 });
 
