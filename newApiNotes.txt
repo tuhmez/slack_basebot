@@ -1,0 +1,47 @@
+receives all schedule data, with many parameters
+
+https://statsapi.mlb.com/api/v1/teams/112?hydrate=
+
+previousSchedule(
+  date=2018-03-07,
+  season=2018,
+  limit=100,
+  gameType=[E,S,R,A,F,D,L,W],
+  team,
+  linescore(matchup,runners),
+  flags,
+  review,
+  decisions,
+  person,
+  stats,
+  game(
+    content(
+	  summary,
+	  media(epg)
+	),
+	tickets
+  ),
+  seriesStatus(useOverride=true)
+),
+nextSchedule(
+  date=2018-03-07,
+  season=2018,
+  limit=200,
+  gameType=[E,S,R,A,F,D,L,W],
+  team,
+  linescore(matchup,runners),
+  flags,
+  review,
+  decisions,
+  person,
+  stats,
+  game(
+    content(
+      summary,
+	  media(epg)
+	),tickets),
+  seriesStatus(useOverride=true)
+)
+&language=en
+
+https://statsapi.mlb.com/api/v1/teams/158?hydrate=previousSchedule(date=2018-03-07,season=2018,limit=100,gameType=[E,S,R,A,F,D,L,W],team,linescore(matchup,runners),flags,review,decisions,person,stats,game(content(summary,media(epg)),tickets),seriesStatus(useOverride=true)),nextSchedule(date=2018-03-07,season=2018,limit=200,gameType=[E,S,R,A,F,D,L,W],team,linescore(matchup,runners),flags,review,decisions,person,stats,game(content(summary,media(epg)),tickets),seriesStatus(useOverride=true))&language=en
